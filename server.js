@@ -24,7 +24,9 @@ const upload = multer({
 
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost:27017/test")
+  .connect(
+    "mongodb+srv://tropicaldog17:tropical@file-sharing-tropical.lzoqe.mongodb.net/?retryWrites=true&w=majority"
+  )
   .catch((error) => console.log(error));
 const app = express();
 app.set("view engine", "ejs");
