@@ -4,7 +4,7 @@ const path = require("path");
 const File = require("./src/models/File");
 const fileRoute = require("./src/routes/file");
 
-global.rootDir = __dirname;
+global.baseURL = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, `${rootDir}/public/data/temp`);
@@ -32,8 +32,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.get("/", (req, res) => {
-  res.send(`${req.protocol}://${req.get("host")}${req.originalUrl}`);
-  // res.render("index.ejs");
+  res.render("index.ejs");
 });
 app.post("/upload", upload.single("filename"), (req, res) => {
   console.log(req.file);
