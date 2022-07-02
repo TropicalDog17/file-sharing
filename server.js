@@ -49,6 +49,6 @@ app.post("/upload", upload.single("filename"), (req, res) => {
   res.redirect(`/file/${file.id}`);
 });
 app.use("/file", fileRoute);
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Server started. Listening at port 3000");
 });
