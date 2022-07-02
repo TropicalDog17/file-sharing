@@ -16,7 +16,7 @@ exports.download_file = async (req, res) => {
   const password = file.password;
   if (req.query.password !== password) {
     return res.render("download-error.ejs", {
-      data: { url: `${baseURL}/file/${file.id}` },
+      data: { url: `${baseURL}file/${file.id}` },
     });
   }
   const path = file.path;
