@@ -32,9 +32,9 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.send(`${req.protocol}://${req.get("host")}${req.originalUrl}`);
+  // res.render("index.ejs");
 });
-
 app.post("/upload", upload.single("filename"), (req, res) => {
   console.log(req.file);
   const file = new File({
