@@ -1,4 +1,7 @@
+require("dotenv").config();
+
 const express = require("express");
+
 const multer = require("multer");
 const path = require("path");
 const File = require("./src/models/File");
@@ -22,11 +25,7 @@ const upload = multer({
 });
 
 const mongoose = require("mongoose");
-mongoose
-  .connect(
-    "mongodb+srv://tropicaldog17:tropical@file-sharing-tropical.lzoqe.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .catch((error) => console.log(error));
+mongoose.connect(process.env.MONGODB_URI).catch((error) => console.log(error));
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
